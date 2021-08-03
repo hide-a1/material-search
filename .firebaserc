@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "material-search": {
+      "hosting": {
+        "material-search": [
+          "material-search"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "material-search"
+  }
+}

@@ -1,0 +1,55 @@
+@import "mixins";
+@import "~@angular/material/theming";
+
+.section-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+  font-family: "Hiragino Kaku Gothic ProN";
+  height: 100vh;
+}
+.login-section {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  &__title {
+    text-align: center;
+  }
+}
+.btn {
+  margin: 0 auto;
+  padding: 8px 16px;
+  min-width: 300px;
+  background-color: white;
+  border: solid 1px;
+  border-radius: 8px;
+  color: #333;
+  line-height: 2;
+  cursor: pointer;
+  @include sp {
+    padding: 8px 40px;
+    min-width: 260px;
+  }
+  @include sp-small {
+    min-width: 224px;
+  }
+  @include mat-elevation-transition;
+  &:focus {
+    outline: none;
+  }
+  &:focus-visible {
+    outline: none;
+    background-color: rgba(black, 0.04);
+  }
+  &:not(.action--disabled) {
+    &:hover {
+      background-color: rgba(black, 0.04);
+      @include mat-elevation(2);
+    }
+  }
+  &--disabled {
+    cursor: auto;
+    pointer-events: none;
+    opacity: 0.12;
+  }
+}

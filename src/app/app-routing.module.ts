@@ -7,6 +7,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('./main-shell/main-shell.module').then((m) => m.MainShellModule),
   },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./login/login.module').then((m) => m.LoginModule),
+  },
 ];
 
 @NgModule({

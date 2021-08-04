@@ -6,6 +6,13 @@ const routes: Routes = [
   {
     path: '',
     component: MainShellComponent,
+    children: [
+      {
+        path: 'create',
+        loadChildren: () =>
+          import('./create/create.module').then((m) => m.CreateModule),
+      },
+    ],
   },
 ];
 

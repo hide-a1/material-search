@@ -1,18 +1,23 @@
 <app-header>
-  <ng-container *ngIf="authService.user$ | async as user">
-    <img
-      [matMenuTriggerFor]="menuRef"
-      class="account"
-      [src]="user.photoUrl"
-      alt=""
-    />
-    <mat-menu #menuRef="matMenu">
-      <button mat-menu-item (click)="logout()">
-        <mat-icon>exit_to_app</mat-icon>
-        <span>ログアウト</span>
-      </button>
-    </mat-menu>
-  </ng-container>
+  <div class="actions">
+    <a routerLink="create" class="icon-btn"
+      ><mat-icon>add_circle_outline</mat-icon></a
+    >
+    <ng-container *ngIf="authService.user$ | async as user">
+      <img
+        [matMenuTriggerFor]="menuRef"
+        class="account"
+        [src]="user.photoUrl"
+        alt=""
+      />
+      <mat-menu #menuRef="matMenu">
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>ログアウト</span>
+        </button>
+      </mat-menu>
+    </ng-container>
+  </div>
 </app-header>
 <div class="content-wrap">
   <router-outlet></router-outlet>

@@ -11,6 +11,8 @@ import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireFunctionsModule, REGION } from '@angular/fire/functions';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,8 +26,17 @@ import { AngularFireFunctionsModule, REGION } from '@angular/fire/functions';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireFunctionsModule,
+    RouterModule,
   ],
-  providers: [{ provide: REGION, useValue: 'asia-northeast1' }],
+  providers: [
+    { provide: REGION, useValue: 'asia-northeast1' },
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+      useValue: {
+        duration: 2000,
+      },
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

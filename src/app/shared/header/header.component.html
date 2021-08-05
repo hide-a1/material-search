@@ -1,6 +1,11 @@
 <header class="header">
   <div class="header-container">
-    <a class="header__logo" routerLink="/">LOGO</a>
+    <a
+      class="header__logo"
+      [routerLink]="['/']"
+      routerLinkActive="router-link-active"
+      >LOGO</a
+    >
     <ng-content></ng-content>
   </div>
 </header>

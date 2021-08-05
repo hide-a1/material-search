@@ -1,1 +1,44 @@
-<p>create works!</p>
+<div class="container">
+  <form class="form" [formGroup]="form" (ngSubmit)="submit()">
+    <mat-form-field appearance="outline">
+      <mat-label>名前</mat-label>
+      <input
+        type="text"
+        formControlName="name"
+        matInput
+        autocomplete="off"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>カテゴリー</mat-label>
+      <mat-select formControlName="category" multiple>
+        <mat-option
+          *ngFor="let category of categoryOptions"
+          [value]="category"
+          >{{ category }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>詳細</mat-label>
+      <input type="text" formControlName="detail" matInput autocomplete="off" />
+    </mat-form-field>
+    <p>サムネイル<sup>*</sup></p>
+    <div class="thumbnail">
+      <deer-crop-trigger
+        [options]="options"
+        (image)="onCroppedImage($event)"
+      ></deer-crop-trigger>
+    </div>
+
+    <button
+      class="btn"
+      mat-raised-button
+      color="primary"
+      [disabled]="form.invalid || !isExistImage"
+    >
+      submit
+    </button>
+  </form>
+</div>

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { CropperOptions } from '@deer-inc/ngx-croppie';
 import { Material } from 'functions/interfaces/material';
 import { MaterialService } from 'src/app/services/material.service';
-import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-create',
@@ -29,6 +29,7 @@ export class CreateComponent implements OnInit {
   });
 
   options: CropperOptions = {
+    oldImageUrl: '',
     aspectRatio: 4 / 3,
     width: 200,
     resultType: 'base64',
@@ -40,7 +41,8 @@ export class CreateComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private materialService: MaterialService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
@@ -61,11 +63,17 @@ export class CreateComponent implements OnInit {
       detail: this.form.get('detail')?.value,
       thumbnail: this.image,
     };
-    this.materialService.createMaterial(data).then(() => {
-      this.form.reset();
-      this.image = '';
-      this.snackBar.open('投稿が完了しました');
-    });
-    console.log('submit');
+    this.materialService
+      .createMaterial(data)
+      .then(() => {
+        this.options.oldImageUrl = '';
+        this.isExistImage = false;
+        this.snackBar.open('投稿が完了しました');
+        this.router.navigate(['/']);
+      })
+      .catch((error) => {
+        console.error(error);
+        this.snackBar.open('投稿が失敗しました');
+      });
   }
 }

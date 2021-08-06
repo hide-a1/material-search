@@ -5,3 +5,4 @@ admin.initializeApp(functions.config().firebase);
 
 export * from './user.function';
 export * from './material.function';
+export * from './mail.function';

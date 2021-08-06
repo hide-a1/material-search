@@ -27,6 +27,7 @@ export class UserService {
   setSearchHistory(uid: string, category: string) {
     return this.db.doc(`users/${uid}/searchHistory/${category}`).set(
       {
+        category,
         count: firebase.default.firestore.FieldValue.increment(1),
       },
       { merge: true }

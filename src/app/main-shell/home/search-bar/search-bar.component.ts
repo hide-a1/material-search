@@ -4,7 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { MatRadioChange } from '@angular/material/radio';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SearchIndex } from 'algoliasearch/lite';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, take } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 import { MaterialService } from 'src/app/services/material.service';
 import { SearchService } from 'src/app/services/search.service';
@@ -71,6 +71,16 @@ export class SearchBarComponent implements OnInit {
             category
           );
         }
+      });
+  }
+
+  userCheck() {
+    this.userService
+      .getUser(this.authService.uid as string)
+      .pipe(take(1))
+      .toPromise()
+      .then((user) => {
+        console.log(user);
       });
   }
 }

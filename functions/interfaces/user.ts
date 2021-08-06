@@ -4,5 +4,4 @@ export interface User {
   photoUrl: string;
   isAdmin: boolean;
   email: string;
-  searchHistory?: any;
 }

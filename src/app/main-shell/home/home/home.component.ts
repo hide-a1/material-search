@@ -43,7 +43,6 @@ export class HomeComponent implements OnInit {
     this.index.search(query, options).then((result) => {
       // 検索結果を格納
       this.result = result;
-      console.log(result);
     });
   }
 }

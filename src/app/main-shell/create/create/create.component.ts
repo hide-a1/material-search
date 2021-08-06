@@ -12,16 +12,6 @@ import { MaterialService } from 'src/app/services/material.service';
   styleUrls: ['./create.component.scss'],
 })
 export class CreateComponent implements OnInit {
-  categoryOptions: string[] = [
-    '床材',
-    '壁材',
-    '屋根材',
-    '天井材',
-    '断熱材',
-    '防音材',
-    '手すり材',
-    '不燃材',
-  ];
   form: FormGroup = this.fb.group({
     name: ['', [Validators.required]],
     category: ['', [Validators.required]],
@@ -40,7 +30,7 @@ export class CreateComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private materialService: MaterialService,
+    public materialService: MaterialService,
     private snackBar: MatSnackBar,
     private router: Router
   ) {}

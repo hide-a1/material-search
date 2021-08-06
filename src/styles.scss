@@ -51,6 +51,10 @@ body {
   font-family: "Hiragino Kaku Gothic ProN", "Helvetica Neue", sans-serif;
 }
 
+ul {
+  padding: 0;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -64,4 +68,8 @@ body {
 
 .cr-viewport {
   box-sizing: border-box;
+}
+
+.mat-card-footer {
+  margin: 0;
 }

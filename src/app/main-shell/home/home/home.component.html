@@ -1,4 +1,18 @@
-<h2>検索結果一覧 ヒット件数: {{ result?.nbHits }}</h2>
-<ul>
-  <li *ngFor="let hit of result?.hits">{{ hit.name }}</li>
-</ul>
+<div class="container">
+  <div class="section-grid">
+    <mat-card class="search-section">
+      <app-search-bar></app-search-bar>
+    </mat-card>
+    <div class="list">
+      <h2>ヒット件数: {{ result?.nbHits }}</h2>
+      <ul>
+        <div class="card-list">
+          <app-card
+            *ngFor="let hit of result?.hits"
+            [material]="hit"
+          ></app-card>
+        </div>
+      </ul>
+    </div>
+  </div>
+</div>

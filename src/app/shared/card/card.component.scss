@@ -1,0 +1,14 @@
+@import "mixins";
+.card {
+  cursor: pointer;
+  transition: all 280ms;
+  &:hover {
+    color: #007aff;
+    @include sp {
+      color: unset;
+    }
+  }
+  @include sp {
+    padding: 0;
+  }
+}

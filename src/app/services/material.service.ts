@@ -7,6 +7,16 @@ import { StorageService } from './storage.service';
   providedIn: 'root',
 })
 export class MaterialService {
+  categoryOptions: string[] = [
+    '床材',
+    '壁材',
+    '屋根材',
+    '天井材',
+    '断熱材',
+    '防音材',
+    '手すり材',
+    '不燃材',
+  ];
   constructor(
     private db: AngularFirestore,
     private storageService: StorageService

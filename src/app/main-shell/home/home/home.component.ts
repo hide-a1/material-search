@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { SearchIndex } from 'algoliasearch/lite';
 import { SearchService } from 'src/app/services/search.service';
 
@@ -14,16 +15,35 @@ export class HomeComponent implements OnInit {
     nbHits: number;
     hits: any[];
   };
-  constructor(private searchService: SearchService) {}
+  facetFilters!: string[];
+  constructor(
+    private searchService: SearchService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.search('');
+    this.route.queryParamMap.subscribe((paramMap) => {
+      const keyword = paramMap.get('keyword') || '';
+      const category = paramMap.get('category') || '';
+      this.facetFilters = ['category:' + category];
+      this.search(keyword, {
+        facetFilters: this.facetFilters,
+      });
+    });
   }
 
-  private search(query: string) {
-    this.index.search(query).then((result) => {
+  private search(
+    query: string = '',
+    options: {
+      facetFilters: string[];
+      page?: number;
+      hitsPerPage?: number;
+    }
+  ) {
+    this.index.search(query, options).then((result) => {
       // 検索結果を格納
       this.result = result;
+      console.log(result);
     });
   }
 }

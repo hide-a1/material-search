@@ -12,9 +12,9 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>カテゴリー</mat-label>
-      <mat-select formControlName="category" multiple>
+      <mat-select formControlName="category">
         <mat-option
-          *ngFor="let category of categoryOptions"
+          *ngFor="let category of materialService.categoryOptions"
           [value]="category"
           >{{ category }}</mat-option
         >

@@ -1,0 +1,27 @@
+@import "mixins";
+
+mat-form-field {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.search-bar-wrap {
+  padding-bottom: 160px;
+}
+
+.tag {
+  margin-bottom: 24px;
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h3 {
+      font-size: 14px;
+      font-weight: normal;
+      color: rgba(0, 0, 0, 0.54);
+      @include sp {
+        font-size: 16px;
+      }
+    }
+  }
+}

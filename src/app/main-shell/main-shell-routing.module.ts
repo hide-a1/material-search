@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../guards/auth.guard';
 import { MainShellComponent } from './main-shell/main-shell.component';
 
 const routes: Routes = [
   {
     path: '',
     component: MainShellComponent,
+    canActivate: [AuthGuard],
+    canLoad: [AuthGuard],
     children: [
       {
         path: 'create',

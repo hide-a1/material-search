@@ -1,10 +1,8 @@
 <div class="search-bar-wrap">
-  <form class="form">
-    <mat-form-field>
-      <mat-label>キーワード</mat-label>
-      <input type="text" matInput [formControl]="form" autocomplete="off" />
-    </mat-form-field>
-  </form>
+  <mat-form-field>
+    <mat-label>キーワード</mat-label>
+    <input type="text" matInput [formControl]="form" autocomplete="off" />
+  </mat-form-field>
   <mat-label>カテゴリー</mat-label>
   <div style="display: grid">
     <mat-radio-button value="" (change)="check($event)">全て</mat-radio-button>

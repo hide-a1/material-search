@@ -45,7 +45,7 @@ export class SearchBarComponent implements OnInit {
       });
     });
 
-    this.form.valueChanges.pipe(debounceTime(100)).subscribe((value) => {
+    this.form.valueChanges.pipe(debounceTime(500)).subscribe((value) => {
       this.router.navigate([], {
         queryParams: {
           keyword: value || null,
